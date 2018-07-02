@@ -6,17 +6,18 @@ using System.Linq;
 using ConsoleApp.Extension;
 using System.Collections.Generic;
 
-namespace Shape.Circle
+namespace Shape.Square
 {
-    public class Circle<T> : IGenericClass<T>, IUtility
+    public class Square<T> : IGenericClass<T>, IUtility
     {
-        const string _name = "Circle";
-        const string _formula = "PI * Radius2";
+        const string _name = "Square";
+        const string _formula = "Width * Height";
         const int _sides = 0;
         const int _angles = 0;
 
         private T _id;
-        private int _radius;
+        private int _length;
+        private int _width;
 
         #region  ' IGenericClass Interface '
 
@@ -37,17 +38,16 @@ namespace Shape.Circle
         // circle PI * r2
         double IUtility.CalculateArea()
         {
-            return Math.PI * _radius * _radius;
+            return _length * _width;
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
             _id = jobject.Property("id").ToObject<T>();
-            _radius = jobject.Property("r").ToObject<int>();
+            _length = jobject.Property("l").ToObject<int>();
+            _width = jobject.Property("w").ToObject<int>();
         }
 
         #endregion
-
-
     }
 }

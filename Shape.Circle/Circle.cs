@@ -34,7 +34,6 @@ namespace Shape.Circle
 
         #region ' IUtility Interface '
 
-        // circle PI * r2
         double IUtility.CalculateArea()
         {
             return Math.PI * _radius * _radius;

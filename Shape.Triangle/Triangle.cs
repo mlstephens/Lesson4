@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleApp.Interface;
 using Newtonsoft.Json.Linq;
-using ConsoleApp.Interface;
 using System;
-using System.Linq;
-using ConsoleApp.Extension;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Shape.Square
+namespace Shape.Triangle
 {
-    public class Square<T> : IGenericClass<T>, IUtility
+    public class Triangle<T> : IGenericClass<T>, IUtility
     {
         const string _name = "Square";
         const string _formula = "Width * Height";
@@ -16,10 +16,10 @@ namespace Shape.Square
         const int _angles = 0;
 
         private T _id;
-        private int _length;
-        private int _width;
+        private int _base;
+        private int _heigth;
 
-        #region  ' IGenericClass Interface '
+        #region ' IGenericClass Interface '
 
         T IGenericClass<T>.Id => _id;
 
@@ -37,14 +37,14 @@ namespace Shape.Square
 
         double IUtility.CalculateArea()
         {
-            return _length * _width;
+            return _base * _heigth;
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
             _id = jobject.Property("id").ToObject<T>();
-            _length = jobject.Property("l").ToObject<int>();
-            _width = jobject.Property("w").ToObject<int>();
+            _base = jobject.Property("b").ToObject<int>();
+            _heigth = jobject.Property("h").ToObject<int>();
         }
 
         #endregion

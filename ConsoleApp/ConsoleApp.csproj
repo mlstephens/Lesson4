@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shapes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -55,8 +54,16 @@
       <Project>{42f77187-50aa-41cc-91ca-92379019a725}</Project>
       <Name>ConsoleApp.Extension</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp.Interfaces\ConsoleApp.Interface.csproj">
+      <Project>{314F24B3-FE3F-439F-AF8C-42815B9A731A}</Project>
+      <Name>ConsoleApp.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.AllShapes\Shape.AllShapes.csproj">
+      <Project>{d6bddb2f-b654-483c-9e47-c9ddf38a7685}</Project>
+      <Name>Shape.AllShapes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shape.Circle\Shape.Circle.csproj">
-      <Project>{62ecdeab-b9be-4f53-bc25-3a8e4680238d}</Project>
+      <Project>{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}</Project>
       <Name>Shape.Circle</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shape.Parallelogram\Shape.Parallelogram.csproj">

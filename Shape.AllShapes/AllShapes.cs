@@ -8,12 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace Shape.AllShapes
 {
-    public class Shapes<T>
+    public class AllShapes<T>
     {
-        private T _tValue;
-
         public T ID { get; set; }
 
         public List<Circle<T>> Circles { get; set; }
@@ -23,6 +21,5 @@ namespace ConsoleApp
         public List<Square<T>> Squares { get; set; }
 
         public List<Triangle<T>> Triangles { get; set; }
-
     }
 }

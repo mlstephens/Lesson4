@@ -6,29 +6,41 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApp.Interface;
 
 namespace ConsoleApp.Extension
 { 
-    public static class Extensions
+    public static class ConsoleAppExtensions
     {
-        const string _circle = "-circles";
-        const string _square = "-squares";
-        const string _triangle = "-triangles";
-        const string _parallelogram = "-parallelograms";
+        public static readonly string _circle = "-circles";
+        public static readonly string _square = "-squares";
+        public static readonly string _triangle = "-triangles";
+        public static readonly string _parallelogram = "-parallelograms";
 
-        public static List<object> LoadShapes(this List<object> items, string[] clArguments)
+        public static List<T> LoadShapes<T>(this List<T> items, string filePath)
         {
+            //parse the file data returning jobject list
+            //loop thru the jobject list, 
+            //      create a new shape object
+            //      call LoadFromJson(jobject) to parse data
+            //add the item to the shape collection
+
+            var dataObjects = GetFileData(filePath);          
+
+            foreach(var dobj in dataObjects)
+            {
+                var xxx = (T)Activator.CreateInstance(typeof(T));
+                //IUtility iu = xxx;
+                items.Add((T)Activator.CreateInstance(typeof(T)));
+            }
+
             return items;
         }
 
-        /// <summary>
-        /// GetCircleData
-        /// </summary>
-        /// <param name="clArguments">command line arguments</param>
-        /// <returns></returns>
-        public static List<JObject> GetCircleData(this string[] clArguments)
+        public static List<object> GetAllShapes<T>(this object item)
         {
-            return clArguments.GetFilePathFromArgument(_circle).GetFileData();
+            List<object> shapes = new List<object>();
+            return shapes;
         }
 
         /// <summary>
@@ -54,7 +66,7 @@ namespace ConsoleApp.Extension
         /// <param name="clArguments">command line arguments</param>
         /// <param name="argumentNameValue">the command line argument type being searched for. Example: -json</param>
         /// <returns>file path or empty string if can't find that argumentnamevalue</returns>
-        private static string GetFilePathFromArgument(this string[] clArguments, string argumentNameValue)
+        public static string GetFilePathFromArgument(this string[] clArguments, string argumentNameValue)
         {
             string filePath = clArguments.SkipWhile(a => string.Compare(a, argumentNameValue, true) != 0)
                 .Skip(1)

@@ -1,14 +1,9 @@
 ﻿using ConsoleApp.Extension;
 using ConsoleApp.Interface;
-using Newtonsoft.Json.Linq;
 using Shape.AllShapes;
-using Shape.Circle;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -19,44 +14,28 @@ namespace ConsoleApp
         {
             if (clArguments.HaveValidArguments())
             {
-
                 AllShapes<int> allShapes = new AllShapes<int>();
 
                 //circles
-                if (clArguments.Any(cl => cl.Equals(ConsoleAppExtensions._circle)))
-                {
-                    var filePath = clArguments.GetFilePathFromArgument(ConsoleAppExtensions._circle);                    
-                    allShapes.Circles.LoadShapes(filePath);
-                }
+                allShapes.Circles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._circle));
 
                 //parallelograms
-                if (clArguments.Any(cl => cl.Equals(ConsoleAppExtensions._parallelogram)))
-                {
-                    var filePath = clArguments.GetFilePathFromArgument(ConsoleAppExtensions._parallelogram);
-                    allShapes.Parallelograms.LoadShapes(filePath);
-                }
+                allShapes.Parallelograms.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._parallelogram));
 
                 //squares
-                if (clArguments.Any(cl => cl.Equals(ConsoleAppExtensions._square)))
-                {
-                    var filePath = clArguments.GetFilePathFromArgument(ConsoleAppExtensions._square);
-                    allShapes.Squares.LoadShapes(filePath);
-                }
+                allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._square));
 
                 //triangles
-                if (clArguments.Any(cl => cl.Equals(ConsoleAppExtensions._triangle)))
+                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));             
+
+                //allShapes.Circles.ForEach(pd => Console.WriteLine($"Circle (PI * Radius2, {pd.Sides} sides, {pd.Angles} angles): Id: {pd.Id}, Area {pd.}"));
+
+                foreach (var c in allShapes.Circles)
                 {
-                    var filePath = clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle);
-                    allShapes.Triangles.LoadShapes(filePath);
+                    IGenericClass<int> igc = c;
+                    IUtility iu = c;
+                    Console.WriteLine($"Circle (PI * Radius2, {igc.Sides} sides, {igc.Angles} angles): Id: {igc.Id}, Area {iu.CalculateArea()}");
                 }
-
-                //Circle<int> circle = new Circle<int>();
-                //IGenericClass<int> igc = circle;
-                //IUtility iu = circle;
-
-                //List<JObject> parsedData = iu.LoadFromJson(clArguments).ToList();
-                //parsedData.ForEach(pd => Console.WriteLine($"Circle (PI * Radius2, {igc.Sides} sides, {igc.Angles} angles): Id: {igc.Id}, Area {iu.CalculateArea()}"));
-
             }
         }
     }

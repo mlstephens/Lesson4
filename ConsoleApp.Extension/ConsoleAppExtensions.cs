@@ -1,15 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleApp.Interface;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleApp.Interface;
 
 namespace ConsoleApp.Extension
-{ 
+{
     public static class ConsoleAppExtensions
     {
         public static readonly string _circle = "-circles";
@@ -17,6 +15,13 @@ namespace ConsoleApp.Extension
         public static readonly string _triangle = "-triangles";
         public static readonly string _parallelogram = "-parallelograms";
 
+        /// <summary>
+        /// LoadShapes
+        /// </summary>
+        /// <typeparam name="T">collection type. ie: circle</typeparam>
+        /// <param name="items">collection of shapes ie: circles</param>
+        /// <param name="filePath">file containing the shape data</param>
+        /// <returns>a shape collection</returns>
         public static List<T> LoadShapes<T>(this List<T> items, string filePath)
         {
             //parse the file data returning jobject list
@@ -25,22 +30,37 @@ namespace ConsoleApp.Extension
             //      call LoadFromJson(jobject) to parse data
             //add the item to the shape collection
 
-            var dataObjects = GetFileData(filePath);          
+            var jobjects = GetFileData(filePath);
+            dynamic tValue;
 
-            foreach(var dobj in dataObjects)
+            foreach(var jobj in jobjects)
             {
-                var xxx = (T)Activator.CreateInstance(typeof(T));
-                //IUtility iu = xxx;
-                items.Add((T)Activator.CreateInstance(typeof(T)));
+                tValue = Activator.CreateInstance(typeof(T));
+
+                IUtility iu = tValue;
+                iu.LoadFromJson(jobj);
+
+                items.Add(tValue);
             }
 
             return items;
         }
 
-        public static List<object> GetAllShapes<T>(this object item)
+        /// <summary>
+        /// GetAllShapes
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="item">AllShapes class that holds collections of each shape</param>
+        /// <returns>collection of all shapes sorted</returns>
+        public static List<T> GetAllShapes<T>(this object item)
         {
-            List<object> shapes = new List<object>();
-            return shapes;
+            //List<T> shapes = item.Circles
+            //    .Concat(item.Parallelograms)
+            //    .Concat(item.Squares)
+            //    .Concat(item.Triangles)
+            //    .ToList();
+
+            return null;
         }
 
         /// <summary>

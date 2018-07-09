@@ -2,16 +2,20 @@
 using Shape.Parallelogram;
 using Shape.Square;
 using Shape.Triangle;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shape.AllShapes
 {
     public class AllShapes<T>
     {
+        public AllShapes()
+        {
+            Circles = new List<Circle<T>>();
+            Parallelograms = new List<Parallelogram<T>>();
+            Squares = new List<Square<T>>();
+            Triangles = new List<Triangle<T>>();
+        }
+
         public T ID { get; set; }
 
         public List<Circle<T>> Circles { get; set; }

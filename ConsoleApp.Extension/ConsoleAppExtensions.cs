@@ -1,6 +1,7 @@
 ﻿using ConsoleApp.Interface;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Shape.AllShapes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,18 +51,23 @@ namespace ConsoleApp.Extension
         /// GetAllShapes
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="item">AllShapes class that holds collections of each shape</param>
+        /// <param name="allShapes">AllShapes class that holds collections of each shape</param>
         /// <returns>collection of all shapes sorted</returns>
-        public static List<T> GetAllShapes<T>(this object item)
+        public static List<IGenericClass<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
-            //List<T> shapes = item.Circles
-            //    .Concat(item.Parallelograms)
-            //    .Concat(item.Squares)
-            //    .Concat(item.Triangles)
-            //    .ToList();
+            List<IGenericClass<T>> allShapes = shapes.Circles.Cast<IGenericClass<T>>()
+                .Concat(shapes.Parallelograms.Cast<IGenericClass<T>>())
+                .Concat(shapes.Squares.Cast<IGenericClass<T>>())
+                .Concat(shapes.Triangles.Cast<IGenericClass<T>>())
+                .OrderBy(s => s.Name)
+                .ThenBy(s => s.Id)
+                //.ThenByDescending(s => s.AREASIZE)
+                .ToList();
 
-            return null;
+            return allShapes;
         }
+
+
 
         /// <summary>
         /// GetFileData

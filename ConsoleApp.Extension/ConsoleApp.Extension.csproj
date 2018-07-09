@@ -49,6 +49,26 @@
       <Project>{314F24B3-FE3F-439F-AF8C-42815B9A731A}</Project>
       <Name>ConsoleApp.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shape.AllShapes\Shape.AllShapes.csproj">
+      <Project>{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}</Project>
+      <Name>Shape.AllShapes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.Circle\Shape.Circle.csproj">
+      <Project>{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}</Project>
+      <Name>Shape.Circle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.Parallelogram\Shape.Parallelogram.csproj">
+      <Project>{B1792F02-447C-4FE2-BA7F-D5B8354B388D}</Project>
+      <Name>Shape.Parallelogram</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.Square\Shape.Square.csproj">
+      <Project>{78254E16-0D96-4A72-AB8F-0883106C32A9}</Project>
+      <Name>Shape.Square</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.Triangle\Shape.Triangle.csproj">
+      <Project>{242AE226-B420-490D-B754-15C1F0BCA269}</Project>
+      <Name>Shape.Triangle</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

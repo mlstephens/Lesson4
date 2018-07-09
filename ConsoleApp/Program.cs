@@ -26,15 +26,16 @@ namespace ConsoleApp
                 allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._square));
 
                 //triangles
-                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));             
+                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));
 
                 //allShapes.Circles.ForEach(pd => Console.WriteLine($"Circle (PI * Radius2, {pd.Sides} sides, {pd.Angles} angles): Id: {pd.Id}, Area {pd.}"));
 
-                foreach (var c in allShapes.Circles)
+                List<IGenericClass<int>> igc = allShapes.GetAllShapes<int>();
+
+                foreach (var gc in igc)
                 {
-                    IGenericClass<int> igc = c;
-                    IUtility iu = c;
-                    Console.WriteLine($"Circle (PI * Radius2, {igc.Sides} sides, {igc.Angles} angles): Id: {igc.Id}, Area {iu.CalculateArea()}");
+                    IUtility iu = (IUtility)gc;
+                    Console.WriteLine($"{ gc.GetType().Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area {iu.CalculateArea()}");
                 }
             }
         }

@@ -16,7 +16,7 @@ namespace Shape.AllShapes
             Triangles = new List<Triangle<T>>();
         }
 
-        public T ID { get; set; }
+        public T Id { get; set; }
 
         public List<Circle<T>> Circles { get; set; }
 

@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp.Extension\ConsoleApp.Extension.csproj">
-      <Project>{42f77187-50aa-41cc-91ca-92379019a725}</Project>
-      <Name>ConsoleApp.Extension</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConsoleApp.Interfaces\ConsoleApp.Interface.csproj">
       <Project>{314f24b3-fe3f-439f-af8c-42815b9a731a}</Project>
       <Name>ConsoleApp.Interface</Name>

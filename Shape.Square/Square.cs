@@ -3,7 +3,6 @@ using Newtonsoft.Json.Linq;
 using ConsoleApp.Interface;
 using System;
 using System.Linq;
-using ConsoleApp.Extension;
 using System.Collections.Generic;
 
 namespace Shape.Square

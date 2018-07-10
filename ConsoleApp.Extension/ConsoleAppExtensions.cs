@@ -19,24 +19,27 @@ namespace ConsoleApp.Extension
         /// <summary>
         /// LoadShapes
         /// </summary>
-        /// <typeparam name="T">collection type. ie: circle</typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="items">collection of shapes ie: circles</param>
         /// <param name="filePath">file containing the shape data</param>
         /// <returns>a shape collection</returns>
         public static List<T> LoadShapes<T>(this List<T> items, string filePath)
         {
-            var jobjects = GetFileData(filePath);
-            dynamic tValue;
-
-            foreach (var jobj in jobjects)
+            if (!string.IsNullOrEmpty(filePath))
             {
-                tValue = Activator.CreateInstance(typeof(T));
+                var jobjects = GetFileData(filePath);
+                dynamic tValue;
 
-                IUtility iu = tValue;
-                iu.LoadFromJson(jobj);
-                iu.CalculateArea();
+                foreach (var jobj in jobjects)
+                {
+                    tValue = Activator.CreateInstance(typeof(T));
 
-                items.Add(tValue);
+                    IUtility iu = tValue;
+                    iu.LoadFromJson(jobj);
+                    iu.CalculateArea();
+
+                    items.Add(tValue);
+                }
             }
 
             return items;
@@ -47,10 +50,10 @@ namespace ConsoleApp.Extension
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="allShapes">AllShapes class that holds collections of each shape</param>
-        /// <returns>collection of all shapes sorted</returns>
+        /// <returns>collection of all shapes sorted by name, id and area descending</returns>
         public static List<IGenericClass<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
-            List<IGenericClass<T>> allShapes = shapes.Circles.Cast<IGenericClass<T>>()
+            return shapes.Circles.Cast<IGenericClass<T>>()
                 .Concat(shapes.Parallelograms.Cast<IGenericClass<T>>())
                 .Concat(shapes.Squares.Cast<IGenericClass<T>>())
                 .Concat(shapes.Triangles.Cast<IGenericClass<T>>())
@@ -58,8 +61,6 @@ namespace ConsoleApp.Extension
                 .ThenBy(s => s.Id)
                 .ThenByDescending(s => s.Area)
                 .ToList();
-
-            return allShapes;
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace ConsoleApp.Extension
 
             if (!string.IsNullOrWhiteSpace(filePath))
             {
-                parsedData = GetParsedData(File.ReadAllText(filePath));
+                parsedData = GetParsedJsonData(File.ReadAllText(filePath));
             }
 
             return parsedData;
@@ -101,11 +102,11 @@ namespace ConsoleApp.Extension
 
 
         /// <summary>
-        /// GetParsedData
+        /// GetParsedJsonData
         /// </summary>
-        /// <param name="fileData"> </param>
-        /// <returns></returns>
-        private static List<JObject> GetParsedData(string fileData)
+        /// <param name="fileData">file containing json data</param>
+        /// <returns>collection of jobjects</returns>
+        private static List<JObject> GetParsedJsonData(string fileData)
         {
             List<JObject> parsedData = new List<JObject>();
 
@@ -113,7 +114,6 @@ namespace ConsoleApp.Extension
             {
                 if (!string.IsNullOrEmpty(fileData))
                 {
-                    //create a list of json values
                     parsedData = JsonConvert.DeserializeObject<JObject[]>(fileData).ToList();
                 }
             }

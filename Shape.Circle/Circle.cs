@@ -8,7 +8,7 @@ namespace Shape.Circle
     {
         private T _id;
         private double _area;
-        private int _radius;        
+        private double _radius;        
 
         #region  ' IGenericClass Interface '
 
@@ -28,16 +28,15 @@ namespace Shape.Circle
 
         #region ' IUtility Interface '
 
-        double IUtility.CalculateArea()
+        void IUtility.CalculateArea()
         {
             _area = Math.PI * _radius * _radius;
-            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
             _id = jobject.Property("id").ToObject<T>();
-            _radius = jobject.Property("r").ToObject<int>();
+            _radius = jobject.Property("r").ToObject<double>();
         }
 
         #endregion

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ConsoleApp.Interface
+﻿namespace ConsoleApp.Interface
 {
     public interface IGenericClass<T> 
     {

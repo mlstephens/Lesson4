@@ -11,8 +11,8 @@ namespace Shape.Square
     {
         private T _id;
         private double _area;
-        private int _length;
-        private int _width;
+        private double _length;
+        private double _width;
 
         #region  ' IGenericClass Interface '
 
@@ -32,17 +32,16 @@ namespace Shape.Square
 
         #region ' IUtility Interface '
 
-        double IUtility.CalculateArea()
+        void IUtility.CalculateArea()
         {
             _area = _length * _width;
-            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
             _id = jobject.Property("id").ToObject<T>();
-            _length = jobject.Property("l").ToObject<int>();
-            _width = jobject.Property("w").ToObject<int>();
+            _length = jobject.Property("l").ToObject<double>();
+            _width = jobject.Property("w").ToObject<double>();
         }
 
         #endregion

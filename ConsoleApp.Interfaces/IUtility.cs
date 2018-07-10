@@ -13,7 +13,7 @@ namespace ConsoleApp.Interface
         // square Side * Side
         // triangle Base * Height / 2
         // parallelogram Base * Height
-        double CalculateArea();
+        void CalculateArea();
 
         void LoadFromJson(JObject jobject);
     }

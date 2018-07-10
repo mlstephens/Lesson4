@@ -12,8 +12,8 @@ namespace Shape.Parallelogram
     {
         private T _id;
         private double _area;
-        private int _base;
-        private int _height;        
+        private double _base;
+        private double _height;        
 
         #region ' IGenericClass Interface '
 
@@ -33,17 +33,16 @@ namespace Shape.Parallelogram
 
         #region ' IUtility Interface '
 
-        double IUtility.CalculateArea()
+        void IUtility.CalculateArea()
         {
             _area = _base * _height;
-            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
             _id = jobject.Property("id").ToObject<T>();
-            _base = jobject.Property("b").ToObject<int>();
-            _height = jobject.Property("h").ToObject<int>();
+            _base = jobject.Property("b").ToObject<double>();
+            _height = jobject.Property("h").ToObject<double>();
         }
 
         #endregion

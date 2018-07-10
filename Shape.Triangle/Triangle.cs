@@ -10,12 +10,8 @@ namespace Shape.Triangle
 {
     public class Triangle<T> : IGenericClass<T>, IUtility
     {
-        const string _name = "Triangle";
-        const string _formula = "Base * Height";
-        const int _sides = 3;
-        const int _angles = 3;
-
         private T _id;
+        private double _area;
         private int _base;
         private int _height;
 
@@ -23,13 +19,15 @@ namespace Shape.Triangle
 
         T IGenericClass<T>.Id => _id;
 
-        string IGenericClass<T>.Name => _name;
+        string IGenericClass<T>.Name => "Triangle";
 
-        string IGenericClass<T>.Formula => _formula;
+        string IGenericClass<T>.Formula => "Base * Height";
 
-        int IGenericClass<T>.Sides => _sides;
+        int IGenericClass<T>.Sides => 3;
 
-        int IGenericClass<T>.Angles => _angles;
+        int IGenericClass<T>.Angles => 3;
+
+        double IGenericClass<T>.Area => _area;
 
         #endregion
 
@@ -37,7 +35,8 @@ namespace Shape.Triangle
 
         double IUtility.CalculateArea()
         {
-            return _base * _height;
+            _area = _base * _height; ;
+            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)

@@ -3,7 +3,6 @@ using ConsoleApp.Interface;
 using Shape.AllShapes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ConsoleApp
 {
@@ -28,15 +27,8 @@ namespace ConsoleApp
                 //triangles
                 allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));
 
-                //allShapes.Circles.ForEach(pd => Console.WriteLine($"Circle (PI * Radius2, {pd.Sides} sides, {pd.Angles} angles): Id: {pd.Id}, Area {pd.}"));
-
                 List<IGenericClass<int>> igc = allShapes.GetAllShapes<int>();
-
-                foreach (var gc in igc)
-                {
-                    IUtility iu = (IUtility)gc;
-                    Console.WriteLine($"{ gc.GetType().Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area {iu.CalculateArea()}");
-                }
+                igc.ForEach(i => Console.WriteLine($"{ i.Name } ({ i.Formula }, {i.Sides} sides, {i.Angles} angles): Id: {i.Id}, Area {i.Area}"));
             }
         }
     }

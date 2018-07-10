@@ -6,25 +6,23 @@ namespace Shape.Circle
 {
     public class Circle<T> : IGenericClass<T>, IUtility
     {
-        const string _name = "Circle";
-        const string _formula = "PI * Radius2";
-        const int _sides = 0;
-        const int _angles = 0;
-
         private T _id;
-        private int _radius;
+        private double _area;
+        private int _radius;        
 
         #region  ' IGenericClass Interface '
 
         T IGenericClass<T>.Id => _id;
 
-        string IGenericClass<T>.Name => _name;
+        string IGenericClass<T>.Name => "Circle";
 
-        string IGenericClass<T>.Formula => _formula;
+        string IGenericClass<T>.Formula => "PI * Radius2";
 
-        int IGenericClass<T>.Sides => _sides;
+        int IGenericClass<T>.Sides => 0;
 
-        int IGenericClass<T>.Angles => _angles;
+        int IGenericClass<T>.Angles => 0;
+
+        double IGenericClass<T>.Area => _area;
 
         #endregion
 
@@ -32,7 +30,8 @@ namespace Shape.Circle
 
         double IUtility.CalculateArea()
         {
-            return Math.PI * _radius * _radius;
+            _area = Math.PI * _radius * _radius;
+            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)

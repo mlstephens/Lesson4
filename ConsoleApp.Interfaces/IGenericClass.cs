@@ -9,5 +9,6 @@ namespace ConsoleApp.Interface
         string Formula { get; }
         int Sides { get; }
         int Angles { get; }
+        double Area { get; }
     }
 }

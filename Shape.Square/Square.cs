@@ -9,12 +9,8 @@ namespace Shape.Square
 {
     public class Square<T> : IGenericClass<T>, IUtility
     {
-        const string _name = "Square";
-        const string _formula = "Width * Height";
-        const int _sides = 4;
-        const int _angles = 4;
-
         private T _id;
+        private double _area;
         private int _length;
         private int _width;
 
@@ -22,13 +18,15 @@ namespace Shape.Square
 
         T IGenericClass<T>.Id => _id;
 
-        string IGenericClass<T>.Name => _name;
+        string IGenericClass<T>.Name => "Square";
 
-        string IGenericClass<T>.Formula => _formula;
+        string IGenericClass<T>.Formula => "Width * Height";
 
-        int IGenericClass<T>.Sides => _sides;
+        int IGenericClass<T>.Sides => 4;
 
-        int IGenericClass<T>.Angles => _angles;
+        int IGenericClass<T>.Angles => 4;
+
+        double IGenericClass<T>.Area => _area;
 
         #endregion
 
@@ -36,7 +34,8 @@ namespace Shape.Square
 
         double IUtility.CalculateArea()
         {
-            return _length * _width;
+            _area = _length * _width;
+            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)

@@ -25,21 +25,16 @@ namespace ConsoleApp.Extension
         /// <returns>a shape collection</returns>
         public static List<T> LoadShapes<T>(this List<T> items, string filePath)
         {
-            //parse the file data returning jobject list
-            //loop thru the jobject list, 
-            //      create a new shape object
-            //      call LoadFromJson(jobject) to parse data
-            //add the item to the shape collection
-
             var jobjects = GetFileData(filePath);
             dynamic tValue;
 
-            foreach(var jobj in jobjects)
+            foreach (var jobj in jobjects)
             {
                 tValue = Activator.CreateInstance(typeof(T));
 
                 IUtility iu = tValue;
                 iu.LoadFromJson(jobj);
+                iu.CalculateArea();
 
                 items.Add(tValue);
             }
@@ -61,13 +56,11 @@ namespace ConsoleApp.Extension
                 .Concat(shapes.Triangles.Cast<IGenericClass<T>>())
                 .OrderBy(s => s.Name)
                 .ThenBy(s => s.Id)
-                //.ThenByDescending(s => s.AREASIZE)
+                .ThenByDescending(s => s.Area)
                 .ToList();
 
             return allShapes;
         }
-
-
 
         /// <summary>
         /// GetFileData

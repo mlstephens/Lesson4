@@ -10,26 +10,24 @@ namespace Shape.Parallelogram
 {
     public class Parallelogram<T> : IGenericClass<T>, IUtility
     {
-        const string _name = "Parallelogram";
-        const string _formula = "Base * Height";
-        const int _sides = 4;
-        const int _angles = 4;
-
         private T _id;
+        private double _area;
         private int _base;
-        private int _height;
+        private int _height;        
 
         #region ' IGenericClass Interface '
 
         T IGenericClass<T>.Id => _id;
 
-        string IGenericClass<T>.Name => _name;
+        string IGenericClass<T>.Name => "Parallelogram";
 
-        string IGenericClass<T>.Formula => _formula;
+        string IGenericClass<T>.Formula => "Base * Height";
 
-        int IGenericClass<T>.Sides => _sides;
+        int IGenericClass<T>.Sides => 4;
 
-        int IGenericClass<T>.Angles => _angles;
+        int IGenericClass<T>.Angles => 4;
+
+        double IGenericClass<T>.Area => _area;
 
         #endregion
 
@@ -37,7 +35,8 @@ namespace Shape.Parallelogram
 
         double IUtility.CalculateArea()
         {
-            return _base * _height;
+            _area = _base * _height;
+            return _area;
         }
 
         void IUtility.LoadFromJson(JObject jobject)

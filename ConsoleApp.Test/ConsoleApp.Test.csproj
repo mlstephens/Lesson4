@@ -68,6 +68,10 @@
       <Project>{f4b0cc67-424b-4e05-a69e-c4c4a4fe35f4}</Project>
       <Name>ConsoleApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shape.AllShapes\Shape.AllShapes.csproj">
+      <Project>{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}</Project>
+      <Name>Shape.AllShapes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shape.Circle\Shape.Circle.csproj">
       <Project>{62ecdeab-b9be-4f53-bc25-3a8e4680238d}</Project>
       <Name>Shape.Circle</Name>

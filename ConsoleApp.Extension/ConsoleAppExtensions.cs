@@ -100,7 +100,6 @@ namespace ConsoleApp.Extension
             return filePath;
         }
 
-
         /// <summary>
         /// GetParsedJsonData
         /// </summary>

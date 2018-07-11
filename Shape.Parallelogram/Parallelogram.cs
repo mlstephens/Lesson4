@@ -4,7 +4,7 @@ using System;
 
 namespace Shape.Parallelogram
 {
-    public class Parallelogram<T> : IShape<T>, IUtility
+    public class Parallelogram<T> : IShape<T>, IShapeParse
     {
         private T _id;
         private double _area;
@@ -27,14 +27,14 @@ namespace Shape.Parallelogram
 
         #endregion
 
-        #region ' IUtility Interface '
+        #region ' IShapeParse Interface '
 
-        void IUtility.CalculateArea()
+        void IShapeParse.CalculateArea()
         {
             _area = _base * _height;
         }
 
-        void IUtility.LoadFromJson(JObject jobject)
+        void IShapeParse.LoadFromJson(JObject jobject)
         {
             try
             {

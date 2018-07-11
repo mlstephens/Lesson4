@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Interface
 {
-    public interface IUtility
+    public interface IShapeParse
     {
         void CalculateArea();
 

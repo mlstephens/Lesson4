@@ -34,7 +34,7 @@ namespace ConsoleApp.Extension
                 {
                     tValue = Activator.CreateInstance(typeof(T));
 
-                    IUtility iu = tValue;
+                    IShapeParse iu = tValue;
                     iu.LoadFromJson(jobj);
                     iu.CalculateArea();
 
@@ -57,7 +57,7 @@ namespace ConsoleApp.Extension
         //        {
         //            tValue = Activator.CreateInstance(typeof(T));
 
-        //            IUtility iu = (IUtility)tValue;
+        //            IShapeParse iu = (IShapeParse)tValue;
         //            iu.LoadFromJson(jobj);
         //            iu.CalculateArea();
 

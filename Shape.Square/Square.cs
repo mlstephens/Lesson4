@@ -4,7 +4,7 @@ using System;
 
 namespace Shape.Square
 {
-    public class Square<T> : IShape<T>, IUtility
+    public class Square<T> : IShape<T>, IShapeParse
     {
         private T _id;
         private double _area;
@@ -27,14 +27,14 @@ namespace Shape.Square
 
         #endregion
 
-        #region ' IUtility Interface '
+        #region ' IShapeParse Interface '
 
-        void IUtility.CalculateArea()
+        void IShapeParse.CalculateArea()
         {
             _area = _length * _width;
         }
 
-        void IUtility.LoadFromJson(JObject jobject)
+        void IShapeParse.LoadFromJson(JObject jobject)
         {
             try
             {

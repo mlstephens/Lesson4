@@ -45,6 +45,7 @@ namespace ConsoleApp.Extension
             return items;
         }
 
+        // commented out version using object instead of dynamic
         //public static List<T> LoadShapes<T>(this List<T> items, string filePath)
         //{
         //    if (!string.IsNullOrEmpty(filePath))

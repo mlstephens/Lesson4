@@ -1,5 +1,6 @@
 ﻿using ConsoleApp.Interface;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace Shape.Triangle
 {
@@ -35,9 +36,16 @@ namespace Shape.Triangle
 
         void IUtility.LoadFromJson(JObject jobject)
         {
-            _id = jobject.Property("id").ToObject<T>();
-            _base = jobject.Property("b").ToObject<double>();
-            _height = jobject.Property("h").ToObject<double>();
+            try
+            {
+                _id = jobject.Property("id").ToObject<T>();
+                _base = jobject.Property("b").ToObject<double>();
+                _height = jobject.Property("h").ToObject<double>();
+            }
+            catch (NullReferenceException)
+            {
+                throw new ArgumentException("Invalid file parameters.");
+            }
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using ConsoleApp.Interface;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace Shape.Square
 {
@@ -35,9 +36,16 @@ namespace Shape.Square
 
         void IUtility.LoadFromJson(JObject jobject)
         {
-            _id = jobject.Property("id").ToObject<T>();
-            _length = jobject.Property("l").ToObject<double>();
-            _width = jobject.Property("w").ToObject<double>();
+            try
+            {
+                _id = jobject.Property("id").ToObject<T>();
+                _length = jobject.Property("l").ToObject<double>();
+                _width = jobject.Property("w").ToObject<double>();
+            }
+            catch (NullReferenceException)
+            {
+                throw new ArgumentException("Invalid file parameters.");
+            }
         }
 
         #endregion

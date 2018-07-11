@@ -30,13 +30,20 @@ namespace Shape.Circle
 
         void IUtility.CalculateArea()
         {
-            _area = Math.PI * _radius * _radius;
+            _area = Math.PI * (_radius * _radius);
         }
 
         void IUtility.LoadFromJson(JObject jobject)
         {
-            _id = jobject.Property("id").ToObject<T>();
-            _radius = jobject.Property("r").ToObject<double>();
+            try
+            {
+                _id = jobject.Property("id").ToObject<T>();
+                _radius = jobject.Property("r").ToObject<double>();
+            }
+            catch (NullReferenceException)
+            {
+                throw new ArgumentException("Invalid file parameters.");
+            }
         }
 
         #endregion

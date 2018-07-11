@@ -45,6 +45,28 @@ namespace ConsoleApp.Extension
             return items;
         }
 
+        //public static List<T> LoadShapes<T>(this List<T> items, string filePath)
+        //{
+        //    if (!string.IsNullOrEmpty(filePath))
+        //    {
+        //        var jobjects = GetFileData(filePath);
+        //        object tValue;
+
+        //        foreach (var jobj in jobjects)
+        //        {
+        //            tValue = Activator.CreateInstance(typeof(T));
+
+        //            IUtility iu = (IUtility)tValue;
+        //            iu.LoadFromJson(jobj);
+        //            iu.CalculateArea();
+
+        //            items.Add((T)tValue);
+        //        }
+        //    }
+
+        //    return items;
+        //}
+
         /// <summary>
         /// GetAllShapes
         /// </summary>

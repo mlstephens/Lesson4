@@ -16,7 +16,7 @@ namespace Shape.Circle
 
         string IGenericClass<T>.Name => "Circle";
 
-        string IGenericClass<T>.Formula => "PI * Radius2";
+        string IGenericClass<T>.Formula => "pi x radius2";
 
         int IGenericClass<T>.Sides => 0;
 

@@ -31,7 +31,7 @@ namespace ConsoleApp
                 List<IGenericClass<int>> igc = allShapes.GetAllShapes<int>();
 
                 //display shape data
-                igc.ForEach(gc => Console.WriteLine($"{ gc.Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area {gc.Area}"));
+                igc.ForEach(gc => Console.WriteLine($"{ gc.Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area: {gc.Area}"));
             }
         }
     }

@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleApp.Interface;
 using Newtonsoft.Json.Linq;
-using ConsoleApp.Interface;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace Shape.Square
 {
@@ -20,7 +16,7 @@ namespace Shape.Square
 
         string IGenericClass<T>.Name => "Square";
 
-        string IGenericClass<T>.Formula => "Width * Height";
+        string IGenericClass<T>.Formula => "length x width";
 
         int IGenericClass<T>.Sides => 4;
 

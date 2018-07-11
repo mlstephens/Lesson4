@@ -1,10 +1,5 @@
 ﻿using ConsoleApp.Interface;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shape.Triangle
 {
@@ -21,7 +16,7 @@ namespace Shape.Triangle
 
         string IGenericClass<T>.Name => "Triangle";
 
-        string IGenericClass<T>.Formula => "Base * Height";
+        string IGenericClass<T>.Formula => "base x height";
 
         int IGenericClass<T>.Sides => 3;
 

@@ -95,14 +95,45 @@ namespace ConsoleApp.Test
             }
         }
 
+        [TestMethod]
+        public void File_WithDataSortedProperly()
+        {
+            //arrange
+            AllShapes<int> allShapes = new AllShapes<int>();
+            var file1 = CreateTempFile(new string[] { "[{ 'id': 1, 'r': 19.756},{ 'id': 2, 'r': 52}]" });
+            var file2 = CreateTempFile(new string[] { "[{ 'id': 203, 'b': 367, 'h': 134},{'id': 55, 'b': 98, 'h': 28.5}]" });
+
+            string[,] expectedResults = new string[,]
+            {
+                {"Circle", "1", "1226.16215499711" },
+                {"Circle", "2", "8494.8665353068" },
+                {"Parallelogram", "55", "2793" },
+                {"Parallelogram", "203", "49178" }
+            };
+
+            //act
+            allShapes.Circles.LoadShapes(file1);
+            allShapes.Parallelograms.LoadShapes(file2);
+            List<IGenericClass<int>> testResults = allShapes.GetAllShapes<int>();            
+
+            //assert - validate that the sorted test results match the sorted expected results
+            for (int i = 0; i < expectedResults.Length / 3; i++)
+            {
+                //name-formula-sides-angles
+                Assert.AreEqual(testResults[i].Name, expectedResults[i,0]);
+                Assert.AreEqual(testResults[i].Id.ToString(), expectedResults[i,1]);
+                Assert.AreEqual(testResults[i].Area.ToString(), expectedResults[i,2]);
+            }
+        }
+
         #region  " Non Test Methods "
 
-       /// <summary>
-       /// CreateTempFile
-       /// </summary>
-       /// <param name="fileData">array containing data you want to write to the file. pass an empty array if no data needed</param>
-       /// <returns>filepath of new temp file</returns>
-       string CreateTempFile(string[] fileData)
+        /// <summary>
+        /// CreateTempFile
+        /// </summary>
+        /// <param name="fileData">array containing data you want to write to the file. pass an empty array if no data needed</param>
+        /// <returns>filepath of new temp file</returns>
+        string CreateTempFile(string[] fileData)
        {
            string file = Path.GetTempFileName();
 

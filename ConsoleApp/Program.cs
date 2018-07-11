@@ -28,7 +28,7 @@ namespace ConsoleApp
                 allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));
 
                 //combine all shapes
-                List<IGenericClass<int>> igc = allShapes.GetAllShapes<int>();
+                List<IShape<int>> igc = allShapes.GetAllShapes<int>();
 
                 //display shape data
                 igc.ForEach(gc => Console.WriteLine($"{ gc.Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area: {gc.Area}"));

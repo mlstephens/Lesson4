@@ -65,7 +65,7 @@ namespace ConsoleApp.Test
             {
                 //act
                 allShapes.Circles.LoadShapes(file);
-                List<IGenericClass<int>> igc = allShapes.GetAllShapes<int>();
+                List<IShape<int>> igc = allShapes.GetAllShapes<int>();
 
                 //assert
                 Assert.IsTrue(igc.Any(i => i.Id == 1 && i.Area == 1226.1621549971051));
@@ -114,7 +114,7 @@ namespace ConsoleApp.Test
             //act
             allShapes.Circles.LoadShapes(file1);
             allShapes.Parallelograms.LoadShapes(file2);
-            List<IGenericClass<int>> testResults = allShapes.GetAllShapes<int>();            
+            List<IShape<int>> testResults = allShapes.GetAllShapes<int>();            
 
             //assert - validate that the sorted test results match the sorted expected results
             for (int i = 0; i < expectedResults.Length / 3; i++)

@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp.Interface
 {
-    public interface IGenericClass<T> 
+    public interface IShape<T> 
     {
         T Id { get; }
         string Name { get; }

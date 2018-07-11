@@ -4,25 +4,25 @@ using System;
 
 namespace Shape.Circle
 {
-    public class Circle<T> : IGenericClass<T>, IUtility
+    public class Circle<T> : IShape<T>, IUtility
     {
         private T _id;
         private double _area;
         private double _radius;        
 
-        #region  ' IGenericClass Interface '
+        #region  ' IShape Interface '
 
-        T IGenericClass<T>.Id => _id;
+        T IShape<T>.Id => _id;
 
-        string IGenericClass<T>.Name => "Circle";
+        string IShape<T>.Name => "Circle";
 
-        string IGenericClass<T>.Formula => "pi x radius2";
+        string IShape<T>.Formula => "pi x radius2";
 
-        int IGenericClass<T>.Sides => 0;
+        int IShape<T>.Sides => 0;
 
-        int IGenericClass<T>.Angles => 0;
+        int IShape<T>.Angles => 0;
 
-        double IGenericClass<T>.Area => _area;
+        double IShape<T>.Area => _area;
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace Shape.Circle
                 _id = jobject.Property("id").ToObject<T>();
                 _radius = jobject.Property("r").ToObject<double>();
             }
-            catch (NullReferenceException)
+            catch
             {
                 throw new ArgumentException("Invalid file parameters.");
             }

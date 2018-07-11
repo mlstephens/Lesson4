@@ -4,26 +4,26 @@ using System;
 
 namespace Shape.Parallelogram
 {
-    public class Parallelogram<T> : IGenericClass<T>, IUtility
+    public class Parallelogram<T> : IShape<T>, IUtility
     {
         private T _id;
         private double _area;
         private double _base;
         private double _height;        
 
-        #region ' IGenericClass Interface '
+        #region ' IShape Interface '
 
-        T IGenericClass<T>.Id => _id;
+        T IShape<T>.Id => _id;
 
-        string IGenericClass<T>.Name => "Parallelogram";
+        string IShape<T>.Name => "Parallelogram";
 
-        string IGenericClass<T>.Formula => "base x height";
+        string IShape<T>.Formula => "base x height";
 
-        int IGenericClass<T>.Sides => 4;
+        int IShape<T>.Sides => 4;
 
-        int IGenericClass<T>.Angles => 4;
+        int IShape<T>.Angles => 4;
 
-        double IGenericClass<T>.Area => _area;
+        double IShape<T>.Area => _area;
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace Shape.Parallelogram
                 _base = jobject.Property("b").ToObject<double>();
                 _height = jobject.Property("h").ToObject<double>();
             }
-            catch (NullReferenceException)
+            catch
             {
                 throw new ArgumentException("Invalid file parameters.");
             }

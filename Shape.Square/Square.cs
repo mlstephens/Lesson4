@@ -4,26 +4,26 @@ using System;
 
 namespace Shape.Square
 {
-    public class Square<T> : IGenericClass<T>, IUtility
+    public class Square<T> : IShape<T>, IUtility
     {
         private T _id;
         private double _area;
         private double _length;
         private double _width;
 
-        #region  ' IGenericClass Interface '
+        #region  ' IShape Interface '
 
-        T IGenericClass<T>.Id => _id;
+        T IShape<T>.Id => _id;
 
-        string IGenericClass<T>.Name => "Square";
+        string IShape<T>.Name => "Square";
 
-        string IGenericClass<T>.Formula => "length x width";
+        string IShape<T>.Formula => "length x width";
 
-        int IGenericClass<T>.Sides => 4;
+        int IShape<T>.Sides => 4;
 
-        int IGenericClass<T>.Angles => 4;
+        int IShape<T>.Angles => 4;
 
-        double IGenericClass<T>.Area => _area;
+        double IShape<T>.Area => _area;
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace Shape.Square
                 _length = jobject.Property("l").ToObject<double>();
                 _width = jobject.Property("w").ToObject<double>();
             }
-            catch (NullReferenceException)
+            catch
             {
                 throw new ArgumentException("Invalid file parameters.");
             }

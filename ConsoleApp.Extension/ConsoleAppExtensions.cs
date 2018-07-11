@@ -74,12 +74,12 @@ namespace ConsoleApp.Extension
         /// <typeparam name="T"></typeparam>
         /// <param name="allShapes">AllShapes class that holds collections of each shape</param>
         /// <returns>collection of all shapes sorted by name, id and area descending</returns>
-        public static List<IGenericClass<T>> GetAllShapes<T>(this AllShapes<T> shapes)
+        public static List<IShape<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
-            return shapes.Circles.Cast<IGenericClass<T>>()
-                .Concat(shapes.Parallelograms.Cast<IGenericClass<T>>())
-                .Concat(shapes.Squares.Cast<IGenericClass<T>>())
-                .Concat(shapes.Triangles.Cast<IGenericClass<T>>())
+            return shapes.Circles.Cast<IShape<T>>()
+                .Concat(shapes.Parallelograms.Cast<IShape<T>>())
+                .Concat(shapes.Squares.Cast<IShape<T>>())
+                .Concat(shapes.Triangles.Cast<IShape<T>>())
                 .OrderBy(s => s.Name)
                 .ThenBy(s => s.Id)
                 .ThenByDescending(s => s.Area)
@@ -154,9 +154,9 @@ namespace ConsoleApp.Extension
         /// <returns></returns>
         public static bool HaveValidArguments(this string[] clArguments)
         {
-            return clArguments.Any(a => string.Equals(a, _circle) 
-                || string.Equals(a, _square) 
-                || string.Equals(a, _triangle) 
+            return clArguments.Any(a => string.Equals(a, _circle)
+                || string.Equals(a, _square)
+                || string.Equals(a, _triangle)
                 || string.Equals(a, _parallelogram));
         }
 

@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Shape.AllShapes;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,7 +34,6 @@ namespace ConsoleApp.Extension
 
                     IJson iu = (IJson)tValue;
                     iu.LoadFromJson(jobj);
-                    iu.CalculateArea();
 
                     items.Add(tValue);
                 }
@@ -57,16 +55,16 @@ namespace ConsoleApp.Extension
                 .OrderByDescending(s => s.CalculateArea())
 
                 .Concat(shapes.Parallelograms
-                            .Cast<IJson>()
-                            .OrderByDescending(s => s.CalculateArea()))
+                        .Cast<IJson>()
+                        .OrderByDescending(s => s.CalculateArea()))
 
                 .Concat(shapes.Squares
-                            .Cast<IJson>()
-                            .OrderByDescending(s => s.CalculateArea()))
+                        .Cast<IJson>()
+                        .OrderByDescending(s => s.CalculateArea()))
 
                 .Concat(shapes.Triangles
-                            .Cast<IJson>()
-                            .OrderByDescending(s => s.CalculateArea()))
+                        .Cast<IJson>()
+                        .OrderByDescending(s => s.CalculateArea()))
 
                 .Cast<IShape<T>>()
                 .OrderBy(s => s.Name)

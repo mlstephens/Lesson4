@@ -31,7 +31,11 @@ namespace ConsoleApp
                 List<IShape<int>> igc = allShapes.GetAllShapes<int>();
 
                 //display shape data
-                igc.ForEach(gc => Console.WriteLine($"{ gc.Name } ({ gc.Formula }, {gc.Sides} sides, {gc.Angles} angles): Id: {gc.Id}, Area: {gc.Area}"));
+                foreach(var gc in igc)
+                {
+                    IJson ij = (IJson)gc;
+                    Console.WriteLine($"{ gc.Name } ({ gc.Formula }, { gc.Sides } sides, { gc.Angles } angles): Id: { gc.Id }, Area: {ij.CalculateArea()}");
+                }
             }
         }
     }

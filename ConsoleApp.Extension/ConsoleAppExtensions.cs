@@ -52,13 +52,25 @@ namespace ConsoleApp.Extension
         /// <returns>collection of all shapes sorted by name, id and area descending</returns>
         public static List<IShape<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
-            return shapes.Circles.Cast<IShape<T>>()
-                .Concat(shapes.Parallelograms.Cast<IShape<T>>())
-                .Concat(shapes.Squares.Cast<IShape<T>>())
-                .Concat(shapes.Triangles.Cast<IShape<T>>())
+            return shapes.Circles
+                .Cast<IJson>()
+                .OrderByDescending(s => s.CalculateArea())
+
+                .Concat(shapes.Parallelograms
+                            .Cast<IJson>()
+                            .OrderByDescending(s => s.CalculateArea()))
+
+                .Concat(shapes.Squares
+                            .Cast<IJson>()
+                            .OrderByDescending(s => s.CalculateArea()))
+
+                .Concat(shapes.Triangles
+                            .Cast<IJson>()
+                            .OrderByDescending(s => s.CalculateArea()))
+
+                .Cast<IShape<T>>()
                 .OrderBy(s => s.Name)
                 .ThenBy(s => s.Id)
-                .ThenByDescending(s => s.Area)
                 .ToList();
         }
 

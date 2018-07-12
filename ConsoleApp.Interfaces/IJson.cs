@@ -4,7 +4,7 @@ namespace ConsoleApp.Interface
 {
     public interface IJson
     {
-        void CalculateArea();
+        double CalculateArea();
 
         void LoadFromJson(JObject jobject);
     }

@@ -7,7 +7,6 @@ namespace Shape.Circle
     public class Circle<T> : IShape<T>, IJson
     {
         private T _id;
-        private double _area;
         private double _radius;
 
         #region  ' IShape Interface '
@@ -22,15 +21,13 @@ namespace Shape.Circle
 
         int IShape<T>.Angles => 0;
 
-        double IShape<T>.Area => _area;
-
         #endregion
 
         #region ' IJson Interface '
 
-        void IJson.CalculateArea()
+        double IJson.CalculateArea()
         {
-            _area = Math.PI * (_radius * _radius);
+            return Math.PI * (_radius * _radius);
         }
 
         void IJson.LoadFromJson(JObject jobject)

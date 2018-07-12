@@ -7,7 +7,6 @@ namespace Shape.Square
     public class Square<T> : IShape<T>, IJson
     {
         private T _id;
-        private double _area;
         private double _length;
         private double _width;
 
@@ -23,15 +22,13 @@ namespace Shape.Square
 
         int IShape<T>.Angles => 4;
 
-        double IShape<T>.Area => _area;
-
         #endregion
 
         #region ' IJson Interface '
 
-        void IJson.CalculateArea()
+        double IJson.CalculateArea()
         {
-            _area = _length * _width;
+            return _length * _width;
         }
 
         void IJson.LoadFromJson(JObject jobject)

@@ -7,7 +7,6 @@ namespace Shape.Triangle
     public class Triangle<T> : IShape<T>, IJson
     {
         private T _id;
-        private double _area;
         private double _base;
         private double _height;
 
@@ -23,15 +22,13 @@ namespace Shape.Triangle
 
         int IShape<T>.Angles => 3;
 
-        double IShape<T>.Area => _area;
-
         #endregion
 
         #region ' IJson Interface '
 
-        void IJson.CalculateArea()
+        double IJson.CalculateArea()
         {
-            _area = _base * _height;
+            return _base * _height;
         }
 
         void IJson.LoadFromJson(JObject jobject)

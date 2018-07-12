@@ -7,7 +7,6 @@ namespace Shape.Parallelogram
     public class Parallelogram<T> : IShape<T>, IJson
     {
         private T _id;
-        private double _area;
         private double _base;
         private double _height;        
 
@@ -23,15 +22,13 @@ namespace Shape.Parallelogram
 
         int IShape<T>.Angles => 4;
 
-        double IShape<T>.Area => _area;
-
         #endregion
 
         #region ' IJson Interface '
 
-        void IJson.CalculateArea()
+        double IJson.CalculateArea()
         {
-            _area = _base * _height;
+            return _base * _height;
         }
 
         void IJson.LoadFromJson(JObject jobject)

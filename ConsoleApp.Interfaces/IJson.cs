@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Interface
 {
-    public interface IShapeParse
+    public interface IJson
     {
         void CalculateArea();
 

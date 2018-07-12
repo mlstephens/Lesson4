@@ -23,18 +23,17 @@ namespace ConsoleApp.Extension
         /// <param name="items">collection of shapes ie: circles</param>
         /// <param name="filePath">file containing the shape data</param>
         /// <returns>a shape collection</returns>
-        public static List<T> LoadShapes<T>(this List<T> items, string filePath)
+        public static List<T> LoadShapes<T>(this List<T> items, string filePath) where T : class, new()
         {
             if (!string.IsNullOrEmpty(filePath))
             {
                 var jobjects = GetFileData(filePath);
-                dynamic tValue;
 
                 foreach (var jobj in jobjects)
                 {
-                    tValue = Activator.CreateInstance(typeof(T));
+                    var tValue = new T();
 
-                    IShapeParse iu = tValue;
+                    IJson iu = (IJson)tValue;
                     iu.LoadFromJson(jobj);
                     iu.CalculateArea();
 
@@ -44,29 +43,6 @@ namespace ConsoleApp.Extension
 
             return items;
         }
-
-        // commented out version using object instead of dynamic
-        //public static List<T> LoadShapes<T>(this List<T> items, string filePath)
-        //{
-        //    if (!string.IsNullOrEmpty(filePath))
-        //    {
-        //        var jobjects = GetFileData(filePath);
-        //        object tValue;
-
-        //        foreach (var jobj in jobjects)
-        //        {
-        //            tValue = Activator.CreateInstance(typeof(T));
-
-        //            IShapeParse iu = (IShapeParse)tValue;
-        //            iu.LoadFromJson(jobj);
-        //            iu.CalculateArea();
-
-        //            items.Add((T)tValue);
-        //        }
-        //    }
-
-        //    return items;
-        //}
 
         /// <summary>
         /// GetAllShapes

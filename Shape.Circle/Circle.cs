@@ -4,11 +4,11 @@ using System;
 
 namespace Shape.Circle
 {
-    public class Circle<T> : IShape<T>, IShapeParse
+    public class Circle<T> : IShape<T>, IJson
     {
         private T _id;
         private double _area;
-        private double _radius;        
+        private double _radius;
 
         #region  ' IShape Interface '
 
@@ -26,14 +26,14 @@ namespace Shape.Circle
 
         #endregion
 
-        #region ' IShapeParse Interface '
+        #region ' IJson Interface '
 
-        void IShapeParse.CalculateArea()
+        void IJson.CalculateArea()
         {
             _area = Math.PI * (_radius * _radius);
         }
 
-        void IShapeParse.LoadFromJson(JObject jobject)
+        void IJson.LoadFromJson(JObject jobject)
         {
             try
             {

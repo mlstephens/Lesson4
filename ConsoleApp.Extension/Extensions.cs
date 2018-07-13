@@ -26,9 +26,7 @@ namespace ConsoleApp.Extension
         {
             if (!string.IsNullOrEmpty(filePath))
             {
-                var jobjects = GetFileData(filePath);
-
-                foreach (var jobj in jobjects)
+                foreach (var jobj in GetParsedJsonData(filePath))
                 {
                     var tValue = new T();
 
@@ -73,27 +71,23 @@ namespace ConsoleApp.Extension
         }
 
         /// <summary>
-        /// GetFileData
+        /// HaveValidArguments
         /// </summary>
-        /// <param name="filePath">file location for data to be parsed</param>
-        /// <returns>returns properly parsed file data</returns>
-        private static List<JObject> GetFileData(this string filePath)
+        /// <param name="clArguments">command line arguments</param>
+        /// <returns></returns>
+        public static bool HaveValidArguments(this string[] clArguments)
         {
-            List<JObject> parsedData = null;
-
-            if (!string.IsNullOrWhiteSpace(filePath))
-            {
-                parsedData = GetParsedJsonData(File.ReadAllText(filePath));
-            }
-
-            return parsedData;
+            return clArguments.Any(a => string.Equals(a, _circle)
+                || string.Equals(a, _parallelogram)
+                || string.Equals(a, _square)
+                || string.Equals(a, _triangle));
         }
 
         /// <summary>
         /// GetFilePathFromArgument
         /// </summary>
         /// <param name="clArguments">command line arguments</param>
-        /// <param name="argumentNameValue">the command line argument type being searched for. Example: -json</param>
+        /// <param name="argumentNameValue">the command line argument type being searched for. Example: -circle</param>
         /// <returns>file path or empty string if can't find that argumentnamevalue</returns>
         public static string GetFilePathFromArgument(this string[] clArguments, string argumentNameValue)
         {
@@ -112,17 +106,17 @@ namespace ConsoleApp.Extension
         /// <summary>
         /// GetParsedJsonData
         /// </summary>
-        /// <param name="fileData">file containing json data</param>
+        /// <param name="filePath">file containing json data</param>
         /// <returns>collection of jobjects</returns>
-        private static List<JObject> GetParsedJsonData(string fileData)
+        private static List<JObject> GetParsedJsonData(string filePath)
         {
-            List<JObject> parsedData = new List<JObject>();
+            List<JObject> parsedData = null;
 
             try
             {
-                if (!string.IsNullOrEmpty(fileData))
+                if (!string.IsNullOrEmpty(filePath))
                 {
-                    parsedData = JsonConvert.DeserializeObject<JObject[]>(fileData).ToList();
+                    parsedData = JsonConvert.DeserializeObject<JObject[]>(File.ReadAllText(filePath)).ToList();
                 }
             }
             catch
@@ -132,19 +126,5 @@ namespace ConsoleApp.Extension
 
             return parsedData;
         }
-
-        /// <summary>
-        /// HaveValidArgument
-        /// </summary>
-        /// <param name="clArguments">command line arguments</param>
-        /// <returns></returns>
-        public static bool HaveValidArguments(this string[] clArguments)
-        {
-            return clArguments.Any(a => string.Equals(a, _circle)
-                || string.Equals(a, _square)
-                || string.Equals(a, _triangle)
-                || string.Equals(a, _parallelogram));
-        }
-
     }
 }

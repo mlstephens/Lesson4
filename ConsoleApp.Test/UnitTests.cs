@@ -118,13 +118,14 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file1 = CreateTempFile(new string[] { "[{ 'id': 1, 'r': 19.756},{ 'id': 2, 'r': 52}]" });
+            var file1 = CreateTempFile(new string[] { "[{ 'id': 1, 'r': 19.756},{ 'id': 2, 'r': 52}, {'id': 2, 'r': 22}]" });
             var file2 = CreateTempFile(new string[] { "[{ 'id': 203, 'b': 367, 'h': 134},{'id': 55, 'b': 98, 'h': 28.5}]" });
 
             string[,] expectedResults = new string[,]
             {
-                {"Circle", "1", "1226.16215499711" },
+                {"Circle", "1", "1226.16215499711" },                
                 {"Circle", "2", "8494.8665353068" },
+                {"Circle", "2", "1520.53084433746" },
                 {"Parallelogram", "55", "2793" },
                 {"Parallelogram", "203", "49178" }
             };

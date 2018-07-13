@@ -28,13 +28,13 @@ namespace ConsoleApp
                 allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));
 
                 //combine all shapes
-                List<IShape<int>> igc = allShapes.GetAllShapes<int>();
+                List<IShape<int>> iShapes = allShapes.GetAllShapes<int>();
 
                 //display shape data
-                foreach(var gc in igc)
+                foreach(var shape in iShapes)
                 {
-                    IJson ij = (IJson)gc;
-                    Console.WriteLine($"{ gc.Name } ({ gc.Formula }, { gc.Sides } sides, { gc.Angles } angles): Id: { gc.Id }, Area: {ij.CalculateArea()}");
+                    IJson ij = (IJson)shape;
+                    Console.WriteLine($"{ shape.Name } ({ shape.Formula }, { shape.Sides } sides, { shape.Angles } angles): Id: { shape.Id }, Area: {ij.CalculateArea()}");
                 }
             }
         }

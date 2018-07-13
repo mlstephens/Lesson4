@@ -11,21 +11,21 @@ namespace ConsoleApp
         [STAThread]
         static void Main(string[] clArguments)
         {
-            if (clArguments.HaveValidArguments())
+            if (clArguments.HasValidArguments())
             {
                 AllShapes<int> allShapes = new AllShapes<int>();
 
                 //circles
-                allShapes.Circles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Circles));
+                allShapes.Circles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.CirclesArgument));
 
                 //parallelograms
-                allShapes.Parallelograms.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Parallelograms));
+                allShapes.Parallelograms.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.ParallelogramsArgument));
 
                 //squares
-                allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Square));
+                allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.SquaresArgument));
 
                 //triangles
-                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Triangles));
+                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.TrianglesArgument));
 
                 //combine all shapes
                 List<IShape<int>> iShapes = allShapes.GetAllShapes<int>();

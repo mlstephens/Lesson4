@@ -10,10 +10,10 @@ namespace ConsoleApp.Extension
 {
     public static class Extensions
     {
-        public static readonly string Circles = "-circles";
-        public static readonly string Square = "-squares";
-        public static readonly string Triangles = "-triangles";
-        public static readonly string Parallelograms = "-parallelograms";
+        public static readonly string CirclesArgument = "-circles";
+        public static readonly string SquaresArgument = "-squares";
+        public static readonly string TrianglesArgument = "-triangles";
+        public static readonly string ParallelogramsArgument = "-parallelograms";
 
         /// <summary>
         /// LoadShapes
@@ -75,12 +75,12 @@ namespace ConsoleApp.Extension
         /// </summary>
         /// <param name="clArguments">command line arguments</param>
         /// <returns></returns>
-        public static bool HaveValidArguments(this string[] clArguments)
+        public static bool HasValidArguments(this string[] clArguments)
         {
-            return clArguments.Any(a => string.Equals(a, Circles)
-                || string.Equals(a, Parallelograms)
-                || string.Equals(a, Square)
-                || string.Equals(a, Triangles));
+            return clArguments.Any(a => string.Equals(a, CirclesArgument)
+                || string.Equals(a, ParallelogramsArgument)
+                || string.Equals(a, SquaresArgument)
+                || string.Equals(a, TrianglesArgument));
         }
 
         /// <summary>

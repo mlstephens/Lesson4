@@ -16,16 +16,16 @@ namespace ConsoleApp
                 AllShapes<int> allShapes = new AllShapes<int>();
 
                 //circles
-                allShapes.Circles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._circle));
+                allShapes.Circles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Circles));
 
                 //parallelograms
-                allShapes.Parallelograms.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._parallelogram));
+                allShapes.Parallelograms.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Parallelograms));
 
                 //squares
-                allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._square));
+                allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Square));
 
                 //triangles
-                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(ConsoleAppExtensions._triangle));
+                allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.Triangles));
 
                 //combine all shapes
                 List<IShape<int>> iShapes = allShapes.GetAllShapes<int>();

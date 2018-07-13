@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace ConsoleApp.Extension
 {
-    public static class ConsoleAppExtensions
+    public static class Extensions
     {
-        public static readonly string _circle = "-circles";
-        public static readonly string _square = "-squares";
-        public static readonly string _triangle = "-triangles";
-        public static readonly string _parallelogram = "-parallelograms";
+        public static readonly string Circles = "-circles";
+        public static readonly string Square = "-squares";
+        public static readonly string Triangles = "-triangles";
+        public static readonly string Parallelograms = "-parallelograms";
 
         /// <summary>
         /// LoadShapes
@@ -77,10 +77,10 @@ namespace ConsoleApp.Extension
         /// <returns></returns>
         public static bool HaveValidArguments(this string[] clArguments)
         {
-            return clArguments.Any(a => string.Equals(a, _circle)
-                || string.Equals(a, _parallelogram)
-                || string.Equals(a, _square)
-                || string.Equals(a, _triangle));
+            return clArguments.Any(a => string.Equals(a, Circles)
+                || string.Equals(a, Parallelograms)
+                || string.Equals(a, Square)
+                || string.Equals(a, Triangles));
         }
 
         /// <summary>

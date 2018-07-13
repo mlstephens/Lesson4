@@ -17,7 +17,7 @@ namespace ConsoleApp.Test
         public void Arguments_WithValidArguments()
         {
             //arrange
-            string[] clArguments = new string[] { ConsoleAppExtensions._circle, string.Empty, ConsoleAppExtensions._parallelogram, string.Empty, ConsoleAppExtensions._square, string.Empty, ConsoleAppExtensions._triangle, string.Empty};
+            string[] clArguments = new string[] { Extensions.Circles, string.Empty, Extensions.Parallelograms, string.Empty, Extensions.Square, string.Empty, Extensions.Triangles, string.Empty};
 
             //assert
             Assert.IsTrue(clArguments.HaveValidArguments());
@@ -37,11 +37,11 @@ namespace ConsoleApp.Test
         public void Arguments_WithInvalidFileNames()
         {
             //arrange
-            string[] clArguments = new string[] { ConsoleAppExtensions._circle, "BadFile.txt", ConsoleAppExtensions._parallelogram, "BadFile.txt" };
+            string[] clArguments = new string[] { Extensions.Circles, "BadFile.txt", Extensions.Parallelograms, "BadFile.txt" };
 
             //assert
-            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(ConsoleAppExtensions._circle));
-            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(ConsoleAppExtensions._parallelogram));
+            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(Extensions.Circles));
+            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(Extensions.Parallelograms));
         }
 
         [TestMethod]

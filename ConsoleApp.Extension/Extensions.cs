@@ -20,13 +20,13 @@ namespace ConsoleApp.Extension
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="items">collection of shapes ie: circles</param>
-        /// <param name="filePath">file containing the shape data</param>
+        /// <param name="file">file containing the shape data</param>
         /// <returns>a shape collection</returns>
-        public static List<T> LoadShapes<T>(this List<T> items, string filePath) where T : class, new()
+        public static List<T> LoadShapes<T>(this List<T> items, FileInfo file) where T : class, new()
         {
-            if (!string.IsNullOrEmpty(filePath))
-            {
-                foreach (var jobj in GetParsedJsonData(filePath))
+            if (file != null)
+                {
+                foreach (var jobj in file.GetParsedJsonData())
                 {
                     var tValue = new T();
 
@@ -88,36 +88,41 @@ namespace ConsoleApp.Extension
         /// </summary>
         /// <param name="clArguments">command line arguments</param>
         /// <param name="argumentNameValue">the command line argument type being searched for. Example: -circle</param>
-        /// <returns>file path or empty string if can't find that argumentnamevalue</returns>
-        public static string GetFilePathFromArgument(this string[] clArguments, string argumentNameValue)
+        /// <returns>file path or null if can't find that argumentnamevalue</returns>
+        public static FileInfo GetFilePathFromArgument(this string[] clArguments, string argumentNameValue)
         {
-            string filePath = clArguments.SkipWhile(a => string.Compare(a, argumentNameValue, true) != 0)
+            FileInfo file = null;
+
+            string filePath = clArguments
+                .SkipWhile(a => string.Compare(a, argumentNameValue, true) != 0)
                 .Skip(1)
                 .FirstOrDefault();
 
-            if (!string.IsNullOrEmpty(filePath) && !File.Exists(filePath))
+            if (!string.IsNullOrEmpty(filePath))
             {
-                throw new FileNotFoundException($"Invalid file name - {filePath}.");
+                file = new FileInfo(filePath);
+
+                if (!file.Exists)
+                {
+                    throw new FileNotFoundException($"Invalid file name - {file.FullName}.");
+                }
             }
 
-            return filePath;
+            return file;
         }
 
         /// <summary>
         /// GetParsedJsonData
         /// </summary>
-        /// <param name="filePath">file containing json data</param>
+        /// <param name="file">file containing json data</param>
         /// <returns>collection of jobjects</returns>
-        private static List<JObject> GetParsedJsonData(string filePath)
+        private static List<JObject> GetParsedJsonData(this FileInfo file)
         {
             List<JObject> parsedData = null;
 
             try
             {
-                if (!string.IsNullOrEmpty(filePath))
-                {
-                    parsedData = JsonConvert.DeserializeObject<JObject[]>(File.ReadAllText(filePath)).ToList();
-                }
+                parsedData = JsonConvert.DeserializeObject<JObject[]>(File.ReadAllText(file.FullName)).ToList();
             }
             catch
             {

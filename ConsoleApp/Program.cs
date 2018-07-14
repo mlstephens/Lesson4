@@ -24,7 +24,7 @@ namespace ConsoleApp
                 //squares
                 allShapes.Squares.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.SquaresArgument));
 
-                //triangles
+                ////triangles
                 allShapes.Triangles.LoadShapes(clArguments.GetFilePathFromArgument(Extensions.TrianglesArgument));
 
                 //combine all shapes

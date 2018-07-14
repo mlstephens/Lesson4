@@ -59,17 +59,18 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = CreateTempFile(new string[] { "[{ 'id': 1, 'r': 19.756},{ 'id': 2, 'r': 52}]" });
+            var file = CreateTempFile(new string[] { "[{ 'id': 1, 'r': 4},{ 'id': 2, 'r': 1}]" });
 
             try
             {
                 //act
-                allShapes.Circles.LoadShapes(file);
+                allShapes.Circles.LoadShapes(new FileInfo(file));
                 List<IShape<int>> igc = allShapes.GetAllShapes<int>();
 
                 //assert
-                Assert.IsTrue(igc.Any(i => i.Id == 1 && igc.Cast<IJson>().Any(j => j.CalculateArea() == 1226.1621549971051)));
-                Assert.IsTrue(igc.Any(i => i.Id == 2 && igc.Cast<IJson>().Any(J => J.CalculateArea() == 8494.8665353068)));
+                Assert.IsTrue(igc.Any(i => i.Id == 1 && igc.Cast<IJson>().Any(j => Math.Round(j.CalculateArea()) == 50)));
+                Assert.IsTrue(igc.Any(i => i.Id == 2 && igc.Cast<IJson>().Any(J => Math.Round(J.CalculateArea()) == 3)));
+
             }
             finally
             {
@@ -87,7 +88,7 @@ namespace ConsoleApp.Test
             try
             {
                 //assert
-                Assert.ThrowsException<JsonSerializationException>(() => allShapes.Circles.LoadShapes(file));
+                Assert.ThrowsException<JsonSerializationException>(() => allShapes.Circles.LoadShapes(new FileInfo(file)));
             }
             finally
             {
@@ -96,16 +97,16 @@ namespace ConsoleApp.Test
         }
 
         [TestMethod]
-        public void File_WithInvalidJSONData()
+        public void File_WithInvalidJSONPropertyNames()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = CreateTempFile(new string[] { "[{ 'XX': 1, 'r': 19.756},{ 'XX': 2, 'r': 52}]" });
+            var file = CreateTempFile(new string[] { "[{ 'XX': 1, 'ZZ': 19.756},{ 'XX': 2, 'ZZ': 52}]" });
 
             try
             {
                 //assert
-                Assert.ThrowsException<ArgumentException>(() => allShapes.Circles.LoadShapes(file));
+                Assert.ThrowsException<ArgumentException>(() => allShapes.Circles.LoadShapes(new FileInfo(file)));
             }
             finally
             {
@@ -123,7 +124,7 @@ namespace ConsoleApp.Test
 
             string[,] expectedResults = new string[,]
             {
-                {"Circle", "1", "1226.16215499711" },                
+                {"Circle", "1", "1226.16215499711" },
                 {"Circle", "2", "8494.8665353068" },
                 {"Circle", "2", "1520.53084433746" },
                 {"Parallelogram", "55", "2793" },
@@ -131,8 +132,8 @@ namespace ConsoleApp.Test
             };
 
             //act
-            allShapes.Circles.LoadShapes(file1);
-            allShapes.Parallelograms.LoadShapes(file2);
+            allShapes.Circles.LoadShapes(new FileInfo(file1));
+            allShapes.Parallelograms.LoadShapes(new FileInfo(file2));
             List<IShape<int>> testResults = allShapes.GetAllShapes<int>();
 
             //assert - validate that the sorted test results match the sorted expected results
@@ -140,7 +141,7 @@ namespace ConsoleApp.Test
             foreach (var tr in testResults)
             {
                 IJson ij = (IJson)tr;
-                
+
                 Assert.AreEqual(tr.Name, expectedResults[counter, 0]);
                 Assert.AreEqual(tr.Id.ToString(), expectedResults[counter, 1]);
                 Assert.AreEqual(ij.CalculateArea().ToString(), expectedResults[counter, 2]);

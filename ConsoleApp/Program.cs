@@ -1,6 +1,4 @@
-﻿using ConsoleApp.Extension;
-using ConsoleApp.Interface;
-using Shape.AllShapes;
+﻿using ConsoleApp.Interface;
 using System;
 using System.Collections.Generic;
 

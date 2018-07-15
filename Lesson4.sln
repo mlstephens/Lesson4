@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Test", "ConsoleApp.Test\ConsoleApp.Test.csproj", "{CE760ECC-A59D-4073-A255-6CC202C959AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Extension", "ConsoleApp.Extension\ConsoleApp.Extension.csproj", "{42F77187-50AA-41CC-91CA-92379019A725}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Circle", "Shape.Circle\Shape.Circle.csproj", "{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Interface", "ConsoleApp.Interfaces\ConsoleApp.Interface.csproj", "{314F24B3-FE3F-439F-AF8C-42815B9A731A}"
@@ -18,8 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Triangle", "Shape.Triangle\Shape.Triangle.csproj", "{242AE226-B420-490D-B754-15C1F0BCA269}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Parallelogram", "Shape.Parallelogram\Shape.Parallelogram.csproj", "{B1792F02-447C-4FE2-BA7F-D5B8354B388D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.AllShapes", "Shape.AllShapes\Shape.AllShapes.csproj", "{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +31,6 @@ Global
 		{CE760ECC-A59D-4073-A255-6CC202C959AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE760ECC-A59D-4073-A255-6CC202C959AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE760ECC-A59D-4073-A255-6CC202C959AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42F77187-50AA-41CC-91CA-92379019A725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42F77187-50AA-41CC-91CA-92379019A725}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42F77187-50AA-41CC-91CA-92379019A725}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42F77187-50AA-41CC-91CA-92379019A725}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62ECDEAB-B9BE-4F53-BC25-3A8E4680238D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,10 +51,6 @@ Global
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6BDDB2F-B654-483C-9E47-C9DDF38A7685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

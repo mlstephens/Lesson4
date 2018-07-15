@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ConsoleApp.Extension;
 using ConsoleApp.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Shape.AllShapes;
 
 namespace ConsoleApp.Test
 {

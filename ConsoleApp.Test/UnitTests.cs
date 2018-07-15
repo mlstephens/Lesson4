@@ -104,7 +104,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{ 'XX': 1, 'ZZ': 19.756},{ 'XX': 2, 'ZZ': 52}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{ 'idd': 1, 'rrr': 19.756},{ 'idd': 2, 'rrr': 52}]" }));
 
             try
             {
@@ -189,7 +189,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "['id': 203, 'b': 367, 'h': 134]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[ 'id': 203, 'b': 367, 'h': 134] " }));
 
             try
             {
@@ -207,7 +207,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 203, 'bb': 367, 'hh': 134}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 203, 'bbb': 367, 'hhh': 134}]" }));
 
             try
             {
@@ -291,7 +291,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "['id': 24, 'l': 24, 'w': 2]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[ 'id': 24, 'l': 24, 'w': 2 ]" }));
 
             try
             {
@@ -309,7 +309,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 24, 'll': 24, 'ww': 2}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 24, 'lll': 24, 'www': 2}]" }));
 
             try
             {
@@ -411,7 +411,7 @@ namespace ConsoleApp.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 1, 'bb': 34, 'hh': 34.5}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 1, 'bbb': 34, 'hhh': 34.5}]" }));
 
             try
             {

@@ -31,11 +31,14 @@ namespace ConsoleApp
                 List<IShape<int>> iShapes = allShapes.GetAllShapes<int>();
 
                 //display shape data
-                foreach(var shape in iShapes)
+                foreach (var shape in iShapes)
                 {
                     IJson ij = (IJson)shape;
                     Console.WriteLine($"{ shape.Name } ({ shape.Formula }, { shape.Sides } sides, { shape.Angles } angles): Id: { shape.Id }, Area: {ij.CalculateArea()}");
                 }
+
+                //testing...
+                //iShapes.ForEach(s => Console.WriteLine($"{ s.Name } ({ s.Formula }, { s.Sides } sides, { s.Angles } angles): Id: { s.Id }, Area: {s.CalculateArea()}"));
             }
         }
     }

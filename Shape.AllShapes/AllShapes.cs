@@ -8,7 +8,7 @@ namespace Shape.AllShapes
 {
     public class AllShapes<T>
     {
-        public T Id { get; set; }
+        public T Id { get; }
 
         public List<Circle<T>> Circles { get; set; } = new List<Circle<T>>();
 

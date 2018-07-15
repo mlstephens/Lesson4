@@ -22,7 +22,7 @@ namespace ConsoleApp.Extension
         /// <param name="items">collection of shapes ie: circles</param>
         /// <param name="file">file containing the shape data</param>
         /// <returns>a shape collection</returns>
-        public static List<T> LoadShapes<T>(this List<T> items, FileInfo file) where T : class, new()
+        public static List<T> LoadShapes<T>(this List<T> items, FileInfo file) where T : class, IJson, new()
         {
             if (file != null)
                 {
@@ -30,9 +30,8 @@ namespace ConsoleApp.Extension
                 {
                     var tValue = new T();
 
-                    IJson iu = (IJson)tValue;
-                    iu.LoadFromJson(jobj);
-
+                    tValue.LoadFromJson(jobj);
+                    
                     items.Add(tValue);
                 }
             }
@@ -48,14 +47,10 @@ namespace ConsoleApp.Extension
         /// <returns>collection of all shapes sorted by name, id and area descending</returns>
         public static List<IShape<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
-            return shapes.Circles
-                    .Cast<IJson>()
-                .Concat(shapes.Parallelograms
-                    .Cast<IJson>())
-                .Concat(shapes.Squares
-                    .Cast<IJson>())
-                .Concat(shapes.Triangles
-                    .Cast<IJson>())
+            return shapes.Circles.Cast<IJson>()
+                .Concat(shapes.Parallelograms.Cast<IJson>())
+                .Concat(shapes.Squares.Cast<IJson>())
+                .Concat(shapes.Triangles.Cast<IJson>())
                 .OrderByDescending(s => s.CalculateArea())
                 .Cast<IShape<T>>()
                 .OrderBy(s => s.Name)

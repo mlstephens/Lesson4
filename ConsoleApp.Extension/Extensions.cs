@@ -49,21 +49,14 @@ namespace ConsoleApp.Extension
         public static List<IShape<T>> GetAllShapes<T>(this AllShapes<T> shapes)
         {
             return shapes.Circles
-                .Cast<IJson>()
-                .OrderByDescending(s => s.CalculateArea())
-
+                    .Cast<IJson>()
                 .Concat(shapes.Parallelograms
-                        .Cast<IJson>()
-                        .OrderByDescending(s => s.CalculateArea()))
-
+                    .Cast<IJson>())
                 .Concat(shapes.Squares
-                        .Cast<IJson>()
-                        .OrderByDescending(s => s.CalculateArea()))
-
+                    .Cast<IJson>())
                 .Concat(shapes.Triangles
-                        .Cast<IJson>()
-                        .OrderByDescending(s => s.CalculateArea()))
-
+                    .Cast<IJson>())
+                .OrderByDescending(s => s.CalculateArea())
                 .Cast<IShape<T>>()
                 .OrderBy(s => s.Name)
                 .ThenBy(s => s.Id)

@@ -7,26 +7,26 @@ using ConsoleApp.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
-namespace Shape.Parallelogram.Test
+namespace Shape.Square.Test
 {
     [TestClass]
-    public class ParallelogramTest
+    public class SquareTest
     {
         [TestMethod]
         public void File_WithValidJSONFormat()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'id': 203, 'b': 367, 'h': 134}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'id': 24, 'l': 24, 'w': 2}]" }));
 
             try
             {
                 //act
-                allShapes.Parallelograms.LoadShapes(file);
+                allShapes.Squares.LoadShapes(file);
                 List<IShape<int>> igc = allShapes.GetAllShapes<int>();
 
                 //assert
-                Assert.IsTrue(igc.Any(i => i.Id == 203 && igc.Cast<IJson>().Any(j => Math.Round(j.CalculateArea()) == 49178)));
+                Assert.IsTrue(igc.Any(i => i.Id == 24 && igc.Cast<IJson>().Any(j => Math.Round(j.CalculateArea()) == 48)));
 
             }
             finally
@@ -40,12 +40,12 @@ namespace Shape.Parallelogram.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[ 'id': 203, 'b': 367, 'h': 134] " }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[ 'id': 24, 'l': 24, 'w': 2 ]" }));
 
             try
             {
                 //assert
-                Assert.ThrowsException<JsonSerializationException>(() => allShapes.Parallelograms.LoadShapes(file));
+                Assert.ThrowsException<JsonSerializationException>(() => allShapes.Squares.LoadShapes(file));
             }
             finally
             {
@@ -58,12 +58,12 @@ namespace Shape.Parallelogram.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 203, 'bbb': 367, 'hhh': 134}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'idd': 24, 'lll': 24, 'www': 2}]" }));
 
             try
             {
                 //assert
-                Assert.ThrowsException<ArgumentException>(() => allShapes.Parallelograms.LoadShapes(file));
+                Assert.ThrowsException<ArgumentException>(() => allShapes.Squares.LoadShapes(file));
             }
             finally
             {
@@ -76,19 +76,19 @@ namespace Shape.Parallelogram.Test
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
-            var file = new FileInfo(CreateTempFile(new string[] { "[{'id': 203, 'b': 367, 'h': 134},{'id': 55, 'b': 98, 'h': 28.5}, {'id': 55, 'b': 70, 'h': 25.96}]" }));
+            var file = new FileInfo(CreateTempFile(new string[] { "[{'id': 24, 'l': 24, 'w': 2},{'id': 05, 'l': 12.824, 'w': 15}, {'id': 5, 'l': 9.352, 'w': 10}]" }));
 
             string[,] expectedResults = new string[,]
             {
-                {"Parallelogram", "55", "2793" },
-                {"Parallelogram", "55", "1817.2" },
-                {"Parallelogram", "203", "49178" },
+                {"Square", "5", "192.36" },
+                {"Square", "5", "93.52" },
+                {"Square", "24", "48" },
             };
 
             try
             {
                 //act
-                allShapes.Parallelograms.LoadShapes(file);
+                allShapes.Squares.LoadShapes(file);
                 List<IShape<int>> testResults = allShapes.GetAllShapes<int>();
 
                 //assert - validate that the sorted test results match the sorted expected results

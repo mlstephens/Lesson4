@@ -111,8 +111,6 @@ namespace Shape.Circle.Test
             }
         }
 
-        #region  " Non Test Methods "
-
         /// <summary>
         /// CreateTempFile
         /// </summary>
@@ -129,7 +127,5 @@ namespace Shape.Circle.Test
 
             return file;
         }
-
-        #endregion
     }
 }

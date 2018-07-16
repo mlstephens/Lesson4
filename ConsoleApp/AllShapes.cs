@@ -8,8 +8,6 @@ namespace ConsoleApp
 {
     public class AllShapes<T>
     {
-        public T Id { get; }
-
         public List<Circle<T>> Circles { get; set; } = new List<Circle<T>>();
 
         public List<Parallelogram<T>> Parallelograms { get; set; } = new List<Parallelogram<T>>();

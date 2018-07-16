@@ -14,7 +14,7 @@ namespace ConsoleApp.Test
             string[] clArguments = new string[] { Extensions.CirclesArgument, string.Empty, Extensions.ParallelogramsArgument, string.Empty, Extensions.SquaresArgument, string.Empty, Extensions.TrianglesArgument, string.Empty };
 
             //assert
-            Assert.IsTrue(clArguments.HasValidArguments());
+            Assert.IsTrue(clArguments.ValidArguments());
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace ConsoleApp.Test
             string[] clArguments = new string[] { "invalid1", string.Empty, "invalid2", string.Empty };
 
             //assert
-            Assert.IsFalse(clArguments.HasValidArguments());
+            Assert.IsFalse(clArguments.ValidArguments());
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace ConsoleApp.Test
             string[] clArguments = Array.Empty<string>();
 
             //assert
-            Assert.IsFalse(clArguments.HasValidArguments());
+            Assert.IsFalse(clArguments.ValidArguments());
         } 
     }
 }

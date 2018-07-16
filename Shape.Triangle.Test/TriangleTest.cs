@@ -2,68 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ConsoleApp;
 using ConsoleApp.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
-namespace ConsoleApp.Test
+namespace Shape.Triangle.Test
 {
     [TestClass]
-    public class UnitTests
+    public class TriangleTest
     {
-        #region ' Arguments '
-
         [TestMethod]
-        public void Arguments_WithValidArguments()
-        {
-            //arrange
-            string[] clArguments = new string[] { Extensions.CirclesArgument, string.Empty, Extensions.ParallelogramsArgument, string.Empty, Extensions.SquaresArgument, string.Empty, Extensions.TrianglesArgument, string.Empty };
-
-            //assert
-            Assert.IsTrue(clArguments.HasValidArguments());
-        }
-
-        [TestMethod]
-        public void Arguments_WithInvalidArguments()
-        {
-            //arrange
-            string[] clArguments = new string[] { "invalid1", string.Empty, "invalid2", string.Empty };
-
-            //assert
-            Assert.IsFalse(clArguments.HasValidArguments());
-        }
-
-        [TestMethod]
-        public void Arguments_WithInvalidFileNames()
-        {
-            //arrange
-            string[] clArguments = new string[] { Extensions.CirclesArgument, "BadFile.txt", Extensions.ParallelogramsArgument, "BadFile.txt" };
-
-            //assert
-            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(Extensions.CirclesArgument));
-            Assert.ThrowsException<FileNotFoundException>(() => clArguments.GetFilePathFromArgument(Extensions.ParallelogramsArgument));
-        }
-
-        [TestMethod]
-        public void Arguments_WithMissingArguments()
-        {
-            //arrange
-            string[] clArguments = Array.Empty<string>();
-
-            //assert
-            Assert.IsFalse(clArguments.HasValidArguments());
-        } 
-
-        #endregion
-
-        
-
-        
-
-        #region ' Triangles '
-
-        [TestMethod]
-        public void Triangles_FileWithValidJSONFormat()
+        public void File_WithValidJSONFormat()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
@@ -86,7 +36,7 @@ namespace ConsoleApp.Test
         }
 
         [TestMethod]
-        public void Triangles_FileWithInvalidJSONFormat()
+        public void File_WithInvalidJSONFormat()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
@@ -104,7 +54,7 @@ namespace ConsoleApp.Test
         }
 
         [TestMethod]
-        public void Triangles_FileWithInvalidJSONPropertyNames()
+        public void File_WithInvalidJSONPropertyNames()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
@@ -122,7 +72,7 @@ namespace ConsoleApp.Test
         }
 
         [TestMethod]
-        public void Triangles_FileWithDataSortedProperly()
+        public void File_WithDataSortedProperly()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
@@ -160,27 +110,21 @@ namespace ConsoleApp.Test
             }
         }
 
-        #endregion
-
-        #region  " Non Test Methods "
-
         /// <summary>
         /// CreateTempFile
         /// </summary>
         /// <param name="fileData">array containing data you want to write to the file. pass an empty array if no data needed</param>
         /// <returns>filepath of new temp file</returns>
         string CreateTempFile(string[] fileData)
-       {
-           string file = Path.GetTempFileName();
+        {
+            string file = Path.GetTempFileName();
 
-           if (fileData.Length > 0)
-           {
-               File.WriteAllLines(file, fileData);
-           }
+            if (fileData.Length > 0)
+            {
+                File.WriteAllLines(file, fileData);
+            }
 
-           return file;
-       }
-
-       #endregion
+            return file;
+        }
     }
 }

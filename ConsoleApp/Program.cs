@@ -9,7 +9,7 @@ namespace ConsoleApp
         [STAThread]
         static void Main(string[] clArguments)
         {
-            if (clArguments.HasValidArguments())
+            if (clArguments.ValidArguments())
             {
                 AllShapes<int> allShapes = new AllShapes<int>();
 

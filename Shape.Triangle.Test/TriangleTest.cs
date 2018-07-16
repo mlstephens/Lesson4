@@ -27,7 +27,6 @@ namespace Shape.Triangle.Test
 
                 //assert
                 Assert.IsTrue(igc.Any(i => i.Id == 1 && igc.Cast<IJson>().Any(j => Math.Round(j.CalculateArea()) == 1173)));
-
             }
             finally
             {
@@ -72,7 +71,7 @@ namespace Shape.Triangle.Test
         }
 
         [TestMethod]
-        public void File_WithDataSortedProperly()
+        public void File_WithJSONSortedProperly()
         {
             //arrange
             AllShapes<int> allShapes = new AllShapes<int>();
@@ -95,11 +94,9 @@ namespace Shape.Triangle.Test
                 int counter = 0;
                 foreach (var tr in testResults)
                 {
-                    IJson ij = (IJson)tr;
-
                     Assert.AreEqual(tr.Name, expectedResults[counter, 0]);
                     Assert.AreEqual(tr.Id.ToString(), expectedResults[counter, 1]);
-                    Assert.AreEqual(ij.CalculateArea().ToString(), expectedResults[counter, 2]);
+                    Assert.AreEqual(((IJson)tr).CalculateArea().ToString(), expectedResults[counter, 2]);
 
                     counter++;
                 }
@@ -110,19 +107,11 @@ namespace Shape.Triangle.Test
             }
         }
 
-        /// <summary>
-        /// CreateTempFile
-        /// </summary>
-        /// <param name="fileData">array containing data you want to write to the file. pass an empty array if no data needed</param>
-        /// <returns>filepath of new temp file</returns>
+        //creates temporary testing file
         string CreateTempFile(string[] fileData)
         {
             string file = Path.GetTempFileName();
-
-            if (fileData.Length > 0)
-            {
-                File.WriteAllLines(file, fileData);
-            }
+            File.WriteAllLines(file, fileData);
 
             return file;
         }

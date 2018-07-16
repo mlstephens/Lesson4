@@ -24,13 +24,13 @@ namespace ConsoleApp
         public static List<T> LoadShapes<T>(this List<T> items, FileInfo file) where T : class, IJson, new()
         {
             if (file != null)
-                {
+            {
                 foreach (var jobj in file.GetParsedJsonData())
                 {
                     var tValue = new T();
 
                     tValue.LoadFromJson(jobj);
-                    
+
                     items.Add(tValue);
                 }
             }
@@ -62,7 +62,7 @@ namespace ConsoleApp
         /// </summary>
         /// <param name="clArguments">command line arguments</param>
         /// <returns></returns>
-        public static bool HasValidArguments(this string[] clArguments)
+        public static bool ValidArguments(this string[] clArguments)
         {
             return clArguments.Any(a => string.Equals(a, CirclesArgument)
                 || string.Equals(a, ParallelogramsArgument)

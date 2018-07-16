@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Triangle", "Shape.Tri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Parallelogram", "Shape.Parallelogram\Shape.Parallelogram.csproj", "{B1792F02-447C-4FE2-BA7F-D5B8354B388D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shape.Circle.Test", "Shape.Circle.Test\Shape.Circle.Test.csproj", "{60A724D6-A085-4439-AA07-C8BAE0CBA422}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1792F02-447C-4FE2-BA7F-D5B8354B388D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60A724D6-A085-4439-AA07-C8BAE0CBA422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A724D6-A085-4439-AA07-C8BAE0CBA422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A724D6-A085-4439-AA07-C8BAE0CBA422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A724D6-A085-4439-AA07-C8BAE0CBA422}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

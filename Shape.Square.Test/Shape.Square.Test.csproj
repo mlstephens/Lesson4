@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE760ECC-A59D-4073-A255-6CC202C959AB}</ProjectGuid>
+    <ProjectGuid>{9DB928E3-A4B0-4B74-8FC1-40A8EDFAC029}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleApp.Test</RootNamespace>
-    <AssemblyName>ConsoleApp.Test</AssemblyName>
+    <RootNamespace>Shape.Square.Test</RootNamespace>
+    <AssemblyName>Shape.Square.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -44,20 +44,29 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleAppTest.cs" />
+    <Compile Include="SquareTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleApp.Interfaces\ConsoleApp.Interface.csproj">
+      <Project>{314f24b3-fe3f-439f-af8c-42815b9a731a}</Project>
+      <Name>ConsoleApp.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConsoleApp\ConsoleApp.csproj">
       <Project>{f4b0cc67-424b-4e05-a69e-c4c4a4fe35f4}</Project>
       <Name>ConsoleApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shape.Square\Shape.Square.csproj">
+      <Project>{78254e16-0d96-4a72-ab8f-0883106c32a9}</Project>
+      <Name>Shape.Square</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

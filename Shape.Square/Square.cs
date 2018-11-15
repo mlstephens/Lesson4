@@ -1,0 +1,50 @@
+﻿using ConsoleApp.Interface;
+using Newtonsoft.Json.Linq;
+using System;
+
+namespace Shape.Square
+{
+    public class Square<T> : IShape<T>, IJson
+    {
+        private T _id;
+        private double _length;
+        private double _width;
+
+        #region  ' IShape Interface '
+
+        T IShape<T>.Id => _id;
+
+        string IShape<T>.Name => "Square";
+
+        string IShape<T>.Formula => "length x width";
+
+        int IShape<T>.Sides => 4;
+
+        int IShape<T>.Angles => 4;
+
+        #endregion
+
+        #region ' IJson Interface '
+
+        double IJson.CalculateArea()
+        {
+            return _length * _width;
+        }
+
+        void IJson.LoadFromJson(JObject jobject)
+        {
+            try
+            {
+                _id = jobject.Property("id").ToObject<T>();
+                _length = jobject.Property("l").ToObject<double>();
+                _width = jobject.Property("w").ToObject<double>();
+            }
+            catch
+            {
+                throw new ArgumentException("Invalid file parameters.");
+            }
+        }
+
+        #endregion
+    }
+}
